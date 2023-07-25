@@ -1,0 +1,52 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}
+    item
+{% endblock %}
+
+{% block content %}
+    <main class="container">
+
+  <div class="row g-5">
+    <div class="col-md-8">
+      <h2 class="pb-4 my-4 fst-italic border-bottom">
+        Item
+      </h2>
+    </div>
+  </div>
+    <div class="row g-5">
+        <div class="col-8">
+            <div class="row justify-content-center">
+                <img src="{% static 'img/No-Image-Placeholder.svg' %}" height="500">
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h4 class="text-success">На складе</h4>
+                </div>
+            </div>
+        </div>
+        <div class="col-4 border-start">
+          <div class="position-sticky" style="top: 2rem;">
+            <div class="p-4">
+              <h4 class="fst-italic">Теги</h4>
+              <div class="row justify-content-between">
+                  <div class="col m-1"><button class="btn btn-outline-secondary">tag1</button></div>
+                  <div class="col m-1"><button class="btn btn-outline-secondary">tag2</button></div>
+                  <div class="col m-1"><button class="btn btn-outline-secondary">tag3</button></div>
+                  <div class="col m-1"><button class="btn btn-outline-secondary">tag4</button></div>
+                  <div class="col m-1"><button class="btn btn-outline-secondary">tag5</button></div>
+                  <div class="col m-1"><button class="btn btn-outline-secondary">tag6</button></div>
+                  <div class="col m-1"><button class="btn btn-outline-secondary">tag7</button></div>
+                  <div class="col m-1"><button class="btn btn-outline-secondary">tag8</button></div>
+                  <div class="col m-1"><button class="btn btn-outline-secondary">tag9</button></div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+
+</main>
+
+{% endblock %}

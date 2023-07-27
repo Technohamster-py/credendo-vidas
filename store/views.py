@@ -1,9 +1,12 @@
 from django.shortcuts import render
+from .models import Item
 
 
 def item(request, id):
-    return render(request, 'store/item.html')
+    item = Item.objects.get(id=id)
+    return render(request, 'store/item.html', {'item': item})
 
 
 def catalog(request):
-    return render(request, 'store/catalog.html')
+    items = Item.objects.all()
+    return render(request, 'store/catalog.html', {'items': items})

@@ -18,37 +18,21 @@
     <div class="row g-5">
         <div class="col-8">
             <div class="row justify-content-between">
-        <div class="col-sm m-2 p-2 border">
-            <img class="mb-2" src="{% static 'img/No-Image-Placeholder.svg' %}" height="150">
-            <h5><a class="link-dark" href="item">Title</a></h5>
-            <p class="text-success"> На складе</p>
-        </div>
-        <div class="col-sm m-2 p-2 border">
-            <img class="mb-2" src="{% static 'img/No-Image-Placeholder.svg' %}" height="150">
-            <h5>Title</h5>
-            <p class="text-success"> На складе</p>
-        </div>
-        <div class="col-sm m-2 p-2 border">
-            <img class="mb-2" src="{% static 'img/No-Image-Placeholder.svg' %}" height="150">
-            <h5>Title</h5>
-            <p class="text-danger">Активно</p>
-        </div>
-        <div class="col-sm m-2 p-2 border">
-            <img class="mb-2" src="{% static 'img/No-Image-Placeholder.svg' %}" height="150">
-            <h5>Title</h5>
-            <p class="text-success"> На складе</p>
-        </div>
-        <div class="col-sm m-2 p-2 border">
-            <img class="mb-2" src="{% static 'img/No-Image-Placeholder.svg' %}" height="150">
-            <h5>Title</h5>
-            <p class="text-danger">Активно</p>
-        </div>
-        <div class="col-sm m-2 p-2 border">
-            <img class="mb-2" src="{% static 'img/No-Image-Placeholder.svg' %}" height="150">
-            <h5>Title</h5>
-            <p class="text-success"> На складе</p>
-        </div>
 
+                {% for item in items %}
+                    <div class="col-sm m-2 p-2 border">
+                        <img class="mb-2" src="{{ item.photo.url }}" height="150">
+
+                        <div class="align-self-end">
+                            {% if item.status == item.STORED %}
+                            <p class="mb-0 text-success"> На складе</p>
+                            {% else %}
+                            <p class="mb-0 text-danger"> В работе</p>
+                            {% endif %}
+                        </div>
+                        <h5><a class="link-dark" href="item-id={{ item.id }}">{{ item.name }}</a></h5>
+                    </div>
+                {% endfor %}
     </div>
         </div>
         <div class="col-4 border-start">

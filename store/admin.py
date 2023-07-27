@@ -17,7 +17,6 @@ class ItemAdmin(admin.ModelAdmin):
     readonly_fields = ['preview']
     fields = ['name', 'photo', 'preview', 'place', 'size', 'material', 'color', 'status', 'last_status_change', 'tags']
 
-
     def preview(self, obj):
         photo_url = obj.photo.url
         return mark_safe(f"<img src='{photo_url}' style='max-height: 200px;'>")

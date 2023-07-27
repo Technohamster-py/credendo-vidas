@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-    item
+    {{ item.name }}
 {% endblock %}
 
 {% block content %}
@@ -11,25 +11,61 @@
   <div class="row g-5">
     <div class="col-md-8">
       <h2 class="pb-4 my-4 fst-italic border-bottom">
-        Item
+          {{ item.name }}
       </h2>
     </div>
   </div>
     <div class="row g-5">
         <div class="col-8">
-            <div class="row justify-content-center">
-                <img src="{% static 'img/No-Image-Placeholder.svg' %}" height="500">
+            <div class="row mb-2 justify-content-center">
+                <div class="col">
+                    <img src="{{ item.photo.url }}" height="400px">
+                </div>
+                <div class="col border-start">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th scope="row">Размер:</th>
+                                <td>{{ item.size }}</td>
+                            </tr>
+                            <tr>
+                                    <th scope="row">Расположение:</th>
+                                    <td>{{ item.place }}</td>
+                            </tr>
+                            <tr>
+                                    <th scope="row">Материал:</th>
+                                    <td>{{ item.material }}</td>
+                            </tr>
+                            <tr>
+                                    <th scope="row">Последнее изменение:</th>
+                                    <td>{{ item.last_status_change }}</td>
+                            </tr>
+                            <tr>
+                                    <th scope="row">Теги:</th>
+                                    <td>{% for tag in item.tags.all %}
+                                        {{ tag.title }},
+                                        {% endfor %}
+                                    </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <div class="row">
                 <div class="col">
-                    <h4 class="text-success">На складе</h4>
+                    {% if item.status == item.STORED %}
+                            <h4 class="mb-0 text-success"> На складе</h4>
+                    {% else %}
+                            <h4 class="mb-0 text-danger"> В работе</h4>
+                    {% endif %}
                 </div>
             </div>
         </div>
         <div class="col-4 border-start">
           <div class="position-sticky" style="top: 2rem;">
             <div class="p-4">
-              <h4 class="fst-italic">Теги</h4>
+              <h4 class="fst-italic">История</h4>
               <div class="row justify-content-between">
                   <div class="col m-1"><button class="btn btn-outline-secondary">tag1</button></div>
                   <div class="col m-1"><button class="btn btn-outline-secondary">tag2</button></div>

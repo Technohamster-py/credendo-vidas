@@ -1,3 +1,5 @@
+import datetime
+
 from django.contrib import admin
 from .models import Tag, Item, Operation, Color
 from django.db.models import QuerySet
@@ -40,8 +42,20 @@ class TagAdmin(admin.ModelAdmin):
 
 @admin.register(Operation)
 class OperationAdmin(admin.ModelAdmin):
+    def save_model(self, request, obj, form, change):
+        item = Item.objects.get(name=obj.item)
+        item.last_status_change = datetime.datetime.now()
+
+        if obj.acton == obj.TAKE:
+            item.status = item.ACTIVE
+        else:
+            item.status = item.STORED
+
+        item.save()
+        super().save_model(request, obj, form, change)
+
     list_display = ['date', 'last_name', 'action', 'item']
-    ordering = ['date']
+    ordering = ['-date']
     list_filter = ['action', 'last_name']
     search_fields = ['item']
 

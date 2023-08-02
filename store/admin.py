@@ -46,7 +46,7 @@ class OperationAdmin(admin.ModelAdmin):
         item = Item.objects.get(name=obj.item)
         item.last_status_change = datetime.datetime.now()
 
-        if obj.acton == obj.TAKE:
+        if obj.action == obj.TAKE:
             item.status = item.ACTIVE
         else:
             item.status = item.STORED

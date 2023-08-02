@@ -1,6 +1,17 @@
 from django.db import models
 
 
+class Category(models.Model):
+    name = models.CharField('Названиие категории', max_length=20)
+    parent = models.ForeignKey("self", on_delete=models.PROTECT, null=True, blank=True)
+
+    class Meta:
+        verbose_name = 'Категория'
+        verbose_name_plural = "Категории"
+
+    def __str__(self):
+        return self.name
+
 class Tag(models.Model):
     title = models.CharField('Название тега', max_length=15)
 

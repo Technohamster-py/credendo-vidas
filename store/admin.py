@@ -1,9 +1,15 @@
 import datetime
 
 from django.contrib import admin
-from .models import Tag, Item, Operation, Color
+from .models import Tag, Item, Operation, Color, Category
 from django.db.models import QuerySet
 from django.utils.safestring import mark_safe
+
+
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ['name', 'parent']
+    ordering = ['name']
 
 
 @admin.register(Item)

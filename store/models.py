@@ -51,6 +51,7 @@ class Item(models.Model):
     color = models.ManyToManyField(Color)
     last_status_change = models.DateTimeField('Последнее изменение статуса')
     tags = models.ManyToManyField(Tag)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name="Категория", blank=True, null=True)
 
     class Meta:
         verbose_name = 'Предмет'

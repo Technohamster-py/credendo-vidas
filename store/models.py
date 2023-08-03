@@ -1,11 +1,18 @@
 from django.db import models
+from mptt.models import MPTTModel, TreeForeignKey
 
 
-class Category(models.Model):
+class Category(MPTTModel):
     name = models.CharField('Названиие категории', max_length=20)
-    parent = models.ForeignKey("self", on_delete=models.PROTECT, null=True, blank=True)
+    parent = TreeForeignKey("self", on_delete=models.CASCADE, null=True, blank=True, related_name='children',
+                            verbose_name='Родительская категория')
+    slug = models.SlugField()
+
+    class MPTTМeta:
+        order_insertion_by = ['name']
 
     class Meta:
+        unique_together = [['parent', 'slug']]
         verbose_name = 'Категория'
         verbose_name_plural = "Категории"
 

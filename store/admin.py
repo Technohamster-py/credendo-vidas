@@ -4,10 +4,12 @@ from django.contrib import admin
 from .models import Tag, Item, Operation, Color, Category
 from django.db.models import QuerySet
 from django.utils.safestring import mark_safe
+from django_mptt_admin.admin import DjangoMpttAdmin
 
 
 @admin.register(Category)
-class CategoryAdmin(admin.ModelAdmin):
+class CategoryAdmin(DjangoMpttAdmin):
+    prepopulated_fields = {'slug': ('name',)}
     list_display = ['name', 'parent']
     ordering = ['name']
 

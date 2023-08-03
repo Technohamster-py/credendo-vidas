@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Item, Operation
+from .models import Item, Operation, Category
 
 
 def item(request, id):
@@ -9,8 +9,12 @@ def item(request, id):
 
 
 def category(request, category):
-    pass
+    items = Item.objects.filter(category=category)
+    categories = Category.objects.all()
+
+
 
 def catalog(request):
+    categories = Category.objects.all()
     items = Item.objects.all()
-    return render(request, 'store/catalog.html', {'items': items})
+    return render(request, 'store/catalog.html', {'items': items, 'categories': categories})

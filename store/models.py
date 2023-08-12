@@ -50,15 +50,15 @@ class Item(models.Model):
     ]
 
     name = models.CharField('Название', max_length=100)
-    photo = models.ImageField(upload_to='store/item_images/', null=True)
+    photo = models.ImageField(upload_to='store/item_images/', null=True, blank=True)
     place = models.CharField('Место на складе', max_length=50)
     size = models.CharField('Размер', max_length=30)
     material = models.CharField('Материал', max_length=30, blank=True)
     status = models.BooleanField('Статус', choices=STATUS_CHOISES)
     color = models.ManyToManyField(Color)
     last_status_change = models.DateTimeField('Последнее изменение статуса')
-    tags = models.ManyToManyField(Tag)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name="Категория", blank=True, null=True)
+    tags = models.ManyToManyField(Tag, blank=True, null=True)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name="Категория", blank=True)
 
     class Meta:
         verbose_name = 'Предмет'

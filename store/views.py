@@ -9,9 +9,10 @@ def item(request, id):
 
 
 def category(request, category):
-    items = Item.objects.filter(category=category)
+    active_category = Category.objects.get(slug=category)
+    items = Item.objects.filter(category=active_category)
     categories = Category.objects.all()
-
+    return render(request, 'store/catalog.html', {'items': items, 'categories': categories})
 
 
 def catalog(request):

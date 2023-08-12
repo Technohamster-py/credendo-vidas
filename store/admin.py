@@ -16,8 +16,8 @@ class CategoryAdmin(DjangoMpttAdmin):
 
 @admin.register(Item)
 class ItemAdmin(admin.ModelAdmin):
-    list_display = ['name', 'preview', 'status', 'last_status_change']
-    list_editable = ['status']
+    list_display = ['name', 'preview', 'status', 'last_status_change', 'category']
+    list_editable = ['status', 'category']
     ordering = ['name']
     list_per_page = 10
     filter_horizontal = ['tags', 'color']
@@ -25,7 +25,7 @@ class ItemAdmin(admin.ModelAdmin):
     search_fields = ['name']
     list_filter = ['status', 'tags', 'color']
     readonly_fields = ['preview']
-    fields = ['name', 'photo', 'preview', 'place', 'size', 'material', 'color', 'status', 'last_status_change', 'tags']
+    fields = ['name', 'photo', 'preview', 'category', 'place', 'size', 'material', 'color', 'status', 'last_status_change', 'tags']
 
     def preview(self, obj):
         photo_url = obj.photo.url

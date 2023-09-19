@@ -50,7 +50,7 @@ class Item(models.Model):
     ]
 
     name = models.CharField('Название', max_length=100)
-    photo = models.ImageField(upload_to='store/item_images/', null=True, blank=True)
+    photo = models.ImageField(upload_to='store/item_images/', default="No-Image-Placeholder.svg")
     place = models.CharField('Место на складе', max_length=50)
     size = models.CharField('Размер', max_length=30)
     material = models.CharField('Материал', max_length=30, blank=True)

@@ -23,9 +23,9 @@ class ItemAdmin(admin.ModelAdmin):
     filter_horizontal = ['tags', 'color']
     actions = ['set_stored', 'set_active']
     search_fields = ['name']
-    list_filter = ['status', 'tags', 'color']
+    list_filter = ['status', 'tags', 'color', 'category']
     readonly_fields = ['preview']
-    fields = ['name', 'photo', 'preview', 'category', 'place', 'size', 'material', 'color', 'status', 'last_status_change', 'tags']
+    fields = ['name', 'photo', 'preview', 'category', 'place', 'size', 'material', 'color', 'status', 'last_status_change', 'tags', 'quantity_available', 'quantity_total']
 
     def preview(self, obj):
         photo_url = obj.photo.url

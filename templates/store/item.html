@@ -54,10 +54,18 @@
             </div>
             <div class="row">
                 <div class="col">
-                    {% if item.status == item.STORED %}
-                            <h4 class="mb-0 text-success"> На складе</h4>
+                    {% if item.quantity_total > 1 %}
+                        {% if item.quantity_available > 0 %}
+                            <h4 class="mb-0 text-success"> Доступно: {{ item.quantity }}</h4>
+                        {% else %}
+                            <h4 class="mb-0 text-danger"> Все в работе</h4>
+                        {% endif %}
                     {% else %}
-                            <h4 class="mb-0 text-danger"> В работе</h4>
+                        {% if item.status == item.STORED %}
+                                <h4 class="mb-0 text-success"> На складе</h4>
+                        {% else %}
+                                <h4 class="mb-0 text-danger"> В работе</h4>
+                        {% endif %}
                     {% endif %}
                 </div>
             </div>

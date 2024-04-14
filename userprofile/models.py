@@ -6,7 +6,7 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     telegram_id = models.CharField(max_length=30)
 
-    def __str__(self):
+    def __unicode__(self):
         return self.user
 
     class Meta:

@@ -59,6 +59,8 @@ class Item(models.Model):
     last_status_change = models.DateTimeField('Последнее изменение статуса')
     tags = models.ManyToManyField(Tag, blank=True, null=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name="Категория", blank=True, default=14)
+    quantity_available = models.IntegerField('Доступное количество', default=1)
+    quantity_total = models.IntegerField('Общее количество', default=1)
 
     class Meta:
         verbose_name = 'Предмет'

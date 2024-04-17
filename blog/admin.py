@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib import admin
 from django.utils.safestring import mark_safe
-from .models import Post, Author
+from .models import Post
 
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
@@ -12,10 +12,6 @@ class PostAdminForm(forms.ModelForm):
         model = Post
         fields = '__all__'
 
-@admin.register(Author)
-class AuthorAdmin(admin.ModelAdmin):
-    list_display = ['name', 'last_name', 'nickname', 'email']
-    search_fields = ['nickname', 'last_name', 'name']
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
@@ -26,7 +22,12 @@ class PostAdmin(admin.ModelAdmin):
     ordering = ['date']
     list_per_page = 20
     readonly_fields = ['preview_cover']
-    fields = ['title', 'cover', 'preview_cover', 'author', 'body', 'is_published']
+    fields = ['title',
+              'cover',
+              'preview_cover',
+              #'author',
+              'body',
+              'is_published']
     form = PostAdminForm
 
     def preview_cover(self, obj):

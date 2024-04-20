@@ -1,8 +1,14 @@
 from django.shortcuts import render
-
+import sys
+sys.path.append('..')
+from blog.models import Post
 
 def index(request):
-    return render(request, 'main/index.html')
+    resent_posts = Post.objects.order_by('-date')[:3]
+    context = {
+        "resent_posts": resent_posts
+    }
+    return render(request, 'main/index.html', context)
 
 
 def about(request):

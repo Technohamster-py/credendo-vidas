@@ -1,0 +1,26 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}
+    {{ post.title }}
+{% endblock %}
+
+{% block content %}
+    <main class="container">
+        <div class="row g-5">
+            <div class="col-md-8">
+                <h2 class="pb-4 my-4 fst-italic border-bottom">{{ post.title }}</h2>
+                
+                <article class="blog-post">
+                    {{ post.body|safe}}
+                </article>
+                <nav class="blog-pagination" aria-label="Pagination">
+                    <a class="btn btn-outline-primary" href="#">Наверх</a>
+                </nav>
+            </div>
+            
+            {% include 'main/aside.html' %}
+
+        </div>
+    </main>
+{% endblock %}

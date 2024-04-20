@@ -2,6 +2,7 @@
 {% load mptt_tags %}
 {% load static %}
 
+
 {% block title %}
     Склад
 {% endblock %}
@@ -42,7 +43,7 @@
                     <div class="col-sm m-2 p-2 border">
 
                         {% if item.photo.url == "" %}
-                            <img class="mb-2" src="{% static 'img/No-Image-Placeholder.svg' %}" height="150">
+                            <img class="mb-2" src="{% static 'img/noimage.svg' %}" height="150">
                         {% else %}
                             <img class="mb-2" src="{{ item.photo.url }}" alt="Image" height="150">
                         {% endif %}

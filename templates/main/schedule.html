@@ -6,66 +6,38 @@
 
 {% block content %}
     <main class="container">
+        <div class="row g-5">
+            <div class="col-md-8">
+                <h2 class="pb-4 my-4 fst-italic border-bottom">
+                    Расписание тренировок
+                </h2>
 
-  <div class="row g-5">
-    <div class="col-md-8">
-      <h2 class="pb-4 my-4 fst-italic border-bottom">
-        Расписание тренировок
-      </h2>
-        <ul>
-            <li>
-                <h4>1 год обучения</h4>
-                <ul>
-                    <li>Вторник 18:00 - 19:30</li>
-                    <li>Четверг 18:00 - 19:30</li>
-                </ul>
-            </li>
-            <li>
-                <h4>2 год обучения</h4>
-                <ul>
-                    <li>Вторник 19:30 - 21:00</li>
-                    <li>Четверг 19:30 - 21:00</li>
-                </ul>
-            </li>
-            <li>
-                <h4>Группа спортивного совершенствования (ГСС)</h4>
-                <ul>
-                    <li>Понедельник 18:30 - 21:30</li>
-                    <li>Среда 18:30 - 21:30</li>
-                    <li>Пятница 18:30 - 21:30</li>
-                </ul>
-            </li>
-        </ul>
+                <article class="blog-post">
+                    <h3 class="blog-post-title">Адрес зала</h3>
+                    <p>г. Моква, ул. Исаковского, д. 29, стр. 1 - школа №1302.</p>
+                    <p>Узнать подробности и записаться на тренировки можно <a href="{% url 'contacts' %}">здесь</a>.</p>
 
-        <p>Все тренировки проходят по адресу <b>Москва, ул. Исаковского, дом 29, стр.1</b></p>
-
-    </div>
-
-    <div class="col-md-4">
-      <div class="position-sticky" style="top: 2rem;">
-        <div class="p-4">
-          <h4 class="fst-italic">Наши выступления</h4>
-          <ol class="list-unstyled mb-0">
-            <li><a href="#">2023</a></li>
-            <li><a href="#">2022</a></li>
-            <li><a href="#">2021</a></li>
-            <li><a href="#">2020</a></li>
-          </ol>
+                    <h3>Расписание</h3>
+                    <table class="table">
+                        <caption>расписание тренировок</caption>
+                        <tr>
+                            <th></th>
+                            <th>Понедельник</th>
+                            <th>Вторник</th>
+                            <th>Среда</th>
+                            <th>Четверг</th>
+                            <th>Пятница</th>
+                        </tr>
+                        <tr>
+                            <th>18:00 - 19:30</th>
+                            <td>ГСС</td>
+                        </tr>
+                    </table>
+                </article>
+            </div>
+            
+            {% include 'main/aside.html' %}
+            
         </div>
-
-        <div class="p-4">
-          <h4 class="fst-italic">Где нас можно найти?</h4>
-          <ol class="list-unstyled">
-            <li><a href="#">Контакты</a></li>
-            <li><a href="#"><i class="fa-brands fa-vk"></i> Вконтакте</a></li>
-            <li><a href="#">Twitter</a></li>
-            <li><a href="#">Telegram</a></li>
-          </ol>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</main>
-
+    </main>
 {% endblock %}

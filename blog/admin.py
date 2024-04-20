@@ -19,7 +19,7 @@ class PostAdmin(admin.ModelAdmin):
     list_editable = ['is_published']
     search_fields = ['title', 'author']
     list_filter = ['author', 'is_published']
-    ordering = ['date']
+    ordering = ['-date']
     list_per_page = 20
     readonly_fields = ['preview_cover']
     fields = ['title',

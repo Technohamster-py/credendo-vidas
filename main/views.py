@@ -4,7 +4,7 @@ sys.path.append('..')
 from blog.models import Post
 
 def index(request):
-    resent_posts = Post.objects.order_by('-date')[:2]
+    resent_posts = Post.objects.order_by('-date')[:3]
     context = {
         "resent_posts": resent_posts
     }

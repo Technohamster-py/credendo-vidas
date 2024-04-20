@@ -8,9 +8,9 @@
     <main class="container">
       <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
         <div class="col-md-6 px-0">
-          <h1 class="display-4 fst-italic">Title of a longer featured blog post</h1>
-          <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>
-          <p class="lead mb-0"><a href="#" class="text-white fw-bold">Continue reading...</a></p>
+          <h1 class="display-4 fst-italic">{{ resent_posts.0.title }}</h1>
+          <p class="lead my-3">{{ resent_posts.0.summary }}</p>
+          <p class="lead mb-0"><a href="blog/post-{{ resent_posts.0.id }}" class="text-white fw-bold">Продолжить...</a></p>
         </div>
       </div>
 
@@ -19,8 +19,8 @@
           <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
             <div class="col p-4 d-flex flex-column position-static">
               <strong class="d-inline-block mb-2 text-primary">World</strong>
-              <h3 class="mb-0">Featured post</h3>
-              <div class="mb-1 text-muted">Nov 12</div>
+              <h3 class="mb-0">{{ resent_posts.1.title }}</h3>
+              <div class="mb-1 text-muted">{{ resent_posts.1.date }}</div>
               <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
               <a href="#" class="stretched-link">Continue reading</a>
             </div>
@@ -180,11 +180,4 @@
       </div>
 
     </main>
-
-    <footer class="blog-footer">
-      <p>Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
-      <p>
-        <a href="#">Back to top</a>
-      </p>
-    </footer>
 {% endblock %}

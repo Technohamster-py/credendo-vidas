@@ -25,7 +25,7 @@ class PostAdmin(admin.ModelAdmin):
     fields = ['title',
               'cover',
               'preview_cover',
-              'summary'
+              'summary',
               #'author',
               'body',
               'is_published']

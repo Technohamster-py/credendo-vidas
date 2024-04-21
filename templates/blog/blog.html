@@ -17,17 +17,25 @@
         <div class="col-8">
             {% for post in posts %}
             	<div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                <div class="col p-4 d-flex flex-column position-static">
-                  <strong class="d-inline-block mb-2 text-primary">World</strong>
-                  <h3 class="mb-0">{{ post.title }}</h3>
-                  <div class="mb-1 text-muted">{{ post.date }}</div>
-                  <p class="card-text mb-auto">{{ post.summary }}</p>
-                  <a href="blog/post-{{ post.id }}" class="stretched-link">Читать дальше</a>
+                    <div class="col p-4 d-flex flex-column position-static">
+                      {% if news.type == 'news' %}
+                            <strong class="d-inline-block mb-2 text-primary">Новость</strong>
+                        {% elif news.type == 'post' %}
+                            <strong class="d-inline-block mb-2 text-success">Статья</strong>
+                        {% endif %}
+                      <h3 class="mb-0">{{ post.title }}</h3>
+                      <div class="mb-1 text-muted">{{ post.date }}</div>
+                      <p class="card-text mb-auto">{{ post.summary }}</p>
+                      {% if post.type == 'news' %}
+                            <a href="news-{{ post.id }}" class="stretched-link">Подробнее</a>
+                        {% elif post.type == 'post' %}
+                            <a href="post-{{ post.id }}" class="stretched-link">Подробнее</a>
+                        {% endif %}
+                    </div>
+                    <div class="col-auto d-none d-lg-block">
+                          <image style="object-fit: cover" class="img" src="{{post.cover.url }}" width="200" height="250" onerror="this.src='{% static 'img/noimage.svg' %}';"/>
+                    </div>
                 </div>
-                <div class="col-auto d-none d-lg-block">
-                      <image style="object-fit: cover" class="img" src="{{post.cover.url }}" width="200" height="250" onerror="this.src='{% static 'img/noimage.svg' %}';"/>
-                </div>
-            </div>
             {% endfor %}
         </div>
         {% include "main/aside.html" %}

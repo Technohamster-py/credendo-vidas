@@ -10,8 +10,9 @@ class Post(models.Model):
     #date_published = models.DateTimeField('Дата публикации', blank=True, null=True)
     author = CurrentUserField(related_name='post_author', add_only=True, on_delete=models.CASCADE, verbose_name='Автор')
     cover = models.ImageField('Обложка', blank=True)
-    summary = models.CharField('Краткое описание', max_length=200, blank=True)
-    is_published = models.BooleanField('Опубликовать', default=True)
+    teaser = models.CharField('Краткое описание', max_length=200, blank=True)
+    is_published = models.BooleanField('Опубликовать', default=False)
+    type = models.CharField('Тип', max_length=20, default='post')
 
     class Meta:
         verbose_name = 'Пост'

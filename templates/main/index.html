@@ -49,15 +49,27 @@
       <div class="row g-5">
         <div class="col-md-8">
           <h2 class="pb-4 mb-4 fst-italic border-bottom">
-            Новости клуба
+            Последние события клуба
           </h2>
             {% for news in resent_news %}
-                <div class="row border-bottom">
-                    <div class="col">
-                        <strong class="text-primary">{{ news.date }}</strong>
+               <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                    <div class="col p-4 d-flex flex-column position-static">
+                        {% if news.type == 'news' %}
+                            <strong class="d-inline-block mb-2 text-primary">Новость</strong>
+                        {% elif news.type == 'post' %}
+                            <strong class="d-inline-block mb-2 text-success">Статья</strong>
+                        {% endif %}
                         <h3 class="mb-0">{{ news.title }}</h3>
-                        <p class="mb-0">{{ news.teaser }}</p>
-                        <a href="news-{{ news.id }}" class="cancel-link">Подробнее</a>
+                        <div class="mb-1 text-muted">{{ news.date }}</div>
+                        <p class="card-text mb-auto">{{ news.teaser }}</p>
+                        {% if news.type == 'news' %}
+                            <a href="news-{{ news.id }}" class="stretched-link">Подробнее</a>
+                        {% elif news.type == 'post' %}
+                            <a href="blog/post-{{ news.id }}" class="stretched-link">Подробнее</a>
+                        {% endif %}
+                    </div>
+                    <div class="col-auto d-none d-lg-block">
+                          <image style="object-fit: cover" class="img" src="{{post.cover.url }}" width="150" height="100%" onerror="this.src='{% static 'img/noimage.svg' %}';"/>
                     </div>
                 </div>
             {% endfor %}

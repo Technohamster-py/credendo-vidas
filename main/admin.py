@@ -9,4 +9,10 @@ class NewsAdmin(admin.ModelAdmin):
     search_fields = ('title', 'teaser')
     ordering = ('-date',)
     list_per_page = 50
+    fields = [
+        'title',
+        'teaser',
+        'content',
+        'date'
+    ]
 

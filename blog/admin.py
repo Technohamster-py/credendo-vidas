@@ -34,4 +34,3 @@ class PostAdmin(admin.ModelAdmin):
     def preview_cover(self, obj):
         cover_url = obj.cover.url
         return mark_safe(f"<img src='{cover_url}' style='max-height: 200px;'>")
-
